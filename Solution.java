@@ -232,4 +232,61 @@ class Solution {
         
     }
 }
+------------------------------------------------------------------------------
+Problem No:6
+Delete Nodes from Linked List Present in Array
+
+You are given an array of integers nums and the head of a linked list. Return the head of the modified linked list after removing all nodes from the linked list that have a value that exists in nums.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3], head = [1,2,3,4,5]
+
+Output: [4,5]
+
+Solution:
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ 
+class Solution {
+    public ListNode modifiedList(int[] nums, ListNode head) {
+        // Create a set to store values in nums for O(1) lookup
+        Set<Integer> numSet = new HashSet<>();
+        for (int num : nums) {
+            numSet.add(num);
+        }
+
+        // Use a dummy node to handle edge cases like removing the head node
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode current = dummy;
+
+        // Traverse the linked list
+        while (current.next != null) {
+            if (numSet.contains(current.next.val)) {
+                // If current node's value is in nums, skip the node (remove it)
+                current.next = current.next.next;
+            } else {
+                // Otherwise, move to the next node
+                current = current.next;
+            }
+        }
+
+        // Return the modified linked list
+        return dummy.next;
+    }
+}
+
 */
