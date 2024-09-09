@@ -411,5 +411,4 @@ we have given two string with white space
 count the whitespace from both string and subtract the whitespace from both string and return the final count 
 give the answer in java
 
-
 */
